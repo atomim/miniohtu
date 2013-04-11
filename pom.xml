@@ -10,7 +10,7 @@
 
     <properties>
         <spring.version>3.2.0.RELEASE</spring.version>
-        <netbeans.hint.deploy.server>Glassfish</netbeans.hint.deploy.server>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
