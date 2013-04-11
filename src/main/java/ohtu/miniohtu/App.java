@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
@@ -45,6 +46,15 @@ public class App {
 
             System.out.println();
         }
+        BibTeXFormatter bf = new BibTeXFormatter();
+        BibTeXDatabase db = new BibTeXDatabase();
+        BibTeXEntry bs = new BibTeXEntry(new Key("book"), new Key("666BOOK"));
+        bs.addField(BibTeXEntry.KEY_AUTHOR, new KeyValue("jarno kalmari"));
+        bs.addField(BibTeXEntry.KEY_BOOKTITLE, new KeyValue("jarno afganistanissa"));
+        
+        db.addObject(bs);
+        bf.format(db, new PrintWriter(System.out));
     }
+
     
 }
