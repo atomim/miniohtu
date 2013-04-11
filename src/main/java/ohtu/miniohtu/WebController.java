@@ -7,11 +7,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 
-@RequestMapping("/")
 public class WebController {
-	@RequestMapping(method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
+    
+        @RequestMapping("/")
+	public String indexPage(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
 		return "index";
+	}
+        
+        @RequestMapping("/list")
+	public String listPage(ModelMap model) {
+		model.addAttribute("message", "Hello world!");
+		return "list";
+	}
+        
+        
+        @RequestMapping("/add")
+	public String addPage(ModelMap model) {
+		model.addAttribute("message", "Hello world!");
+		return "add";
 	}
 }
