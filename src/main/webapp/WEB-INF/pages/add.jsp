@@ -13,5 +13,27 @@
     </head>
     <body>
         <h1>Add</h1>
+        <form action='' method='post'>
+            <ul>
+                <li>
+                    <label for='title'>Title:</label>>
+                    <input class='text' name='title' type='text'>
+                </li
+                <li>
+                    <label for='author'>Author:</label>
+                    <input class='text' name='author' type='text'>
+                </li>
+                <li>
+                    <label for='year'>Year:</label>
+                    <input class='text' name='year' type='text'>
+                </li>
+                <li>
+                    <label for='publisher'>Publisher:</label>
+                    <input class='text' name='publisher' type='text'>
+                </li>
+                <input class='button' type='submit' value='Add citation'>
+            </ul>
+        </form>
+
     </body>
 </html>
