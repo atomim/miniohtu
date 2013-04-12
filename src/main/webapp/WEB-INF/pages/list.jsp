@@ -4,6 +4,7 @@
     Author     : pksu
 --%>
 
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,10 @@
     </head>
     <body>
         <h1>List</h1>
-        <h2></h2>
+        <ul>
+            <li>
+
+            </li>
+        </ul>
     </body>
 </html>

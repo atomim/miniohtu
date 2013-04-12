@@ -16,8 +16,8 @@
         <form action='' method='post'>
             <ul>
                 <li>
-                    <label for='title'>Title:</label>>
-                    <input class='text' name='title' type='text'>
+                    <label for='booktitle'>Title:</label>>
+                    <input class='text' name='booktitle' type='text'>
                 </li
                 <li>
                     <label for='author'>Author:</label>

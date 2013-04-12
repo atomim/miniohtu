@@ -24,6 +24,7 @@ public class CitationsInMemory implements CitationService {
 
     @Override
     public List<Citation> getCitations() {
+        System.out.println(citations);
         return citations;
     }
     
