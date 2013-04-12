@@ -32,7 +32,7 @@ public class Citation {
 
     @Override
     public String toString() {
-        return null;
+        return getBooktitle();
     }
 
     public void setBooktitle(String s) {
@@ -71,25 +71,25 @@ public class Citation {
         bibtex.addField(BibTeXEntry.KEY_JOURNAL, new KeyValue(s));
     }
     public String getJournal() {
-        return bibtex.getField(BibTeXEntry.KEY_JOURNAL).toString();
+        return bibtex.getField(BibTeXEntry.KEY_JOURNAL).toUserString();
     }
     public String getNumber() {
-        return bibtex.getField(BibTeXEntry.KEY_NUMBER).toString();
+        return bibtex.getField(BibTeXEntry.KEY_NUMBER).toUserString();
     }
     public String getBooktitle() {
-        return bibtex.getField(BibTeXEntry.KEY_BOOKTITLE).toString();
+        return bibtex.getField(BibTeXEntry.KEY_BOOKTITLE).toUserString();
     }
     public String getAuthor() {
-        return bibtex.getField(BibTeXEntry.KEY_AUTHOR).toString();
+        return bibtex.getField(BibTeXEntry.KEY_AUTHOR).toUserString();
     }
     public String getPublisher() {
-        return bibtex.getField(BibTeXEntry.KEY_PUBLISHER).toString();
+        return bibtex.getField(BibTeXEntry.KEY_PUBLISHER).toUserString();
     }
     public String getPages() {
-        return bibtex.getField(BibTeXEntry.KEY_PAGES).toString();
+        return bibtex.getField(BibTeXEntry.KEY_PAGES).toUserString();
     }
     public String getYear() {
-        return bibtex.getField(BibTeXEntry.KEY_YEAR).toString();
+        return bibtex.getField(BibTeXEntry.KEY_YEAR).toUserString();
     }
     
     public Map<Key, Value> getFieldMap()  {
