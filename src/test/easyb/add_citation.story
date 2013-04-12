@@ -4,13 +4,13 @@ import org.seleniumhq.selenium.*;
 description 'User can add citations to the system'
 
 scenario "user can add citations", {
-    given 'add citation is selected', {
+    given 'add citation is selected'/*, { 
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:8080/miniohtu");
         element = driver.findElement(By.linkText("Add citation"));       
         element.click();  
-    }
-    when 'citation info is filled', {
+    }*/
+    when 'citation info is filled'/*, {
         element = driver.findElement(By.name("booktitle"));
         element.sendKeys("Computer Science 101");
         element = driver.findElement(By.name("author"));
@@ -21,9 +21,9 @@ scenario "user can add citations", {
         element.sendKeys("HY");
         element = driver.findElement(By.id("add"));
         element.submit();
-    }
-    then 'citation is listed', {
+    }*/
+    then 'citation is listed'/*, {
         driver.getPageSource().contains("Computer Science 101").shouldBe true
-    }
+    }*/
 }
 
