@@ -1,5 +1,7 @@
 package ohtu.miniohtu;
 
+import java.io.IOException;
+import ohtu.miniohtu.citation.BibTeXGenerator;
 import ohtu.miniohtu.citation.Citation;
 import ohtu.miniohtu.citation.CitationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,17 @@ public class WebController {
     }
 
     @RequestMapping("/list")
-    public String listPage(ModelMap model, @ModelAttribute Citation cit) {
+    public String listPage(ModelMap model) {
         model.addAttribute("citationList", cs.getCitations());
         return "list";
     }
 
+    @RequestMapping("/bibtex")
+    public String showBibtex(ModelMap model) throws IOException {
+        model.addAttribute("bibtexSource", BibTeXGenerator.generateBibtex(cs.getCitations()));
+        return "bibtex";
+    }
+    
     @RequestMapping("/add")
     public String addPage(ModelMap model) {
         return "add";

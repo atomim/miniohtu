@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
 import java.util.List;
+import ohtu.miniohtu.citation.Citation;
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.BibTeXFormatter;
@@ -21,7 +22,7 @@ import org.jbibtex.LaTeXPrinter;
 import org.jbibtex.ParseException;
 
 public class Tools {
-
+   
     public List<LaTeXObject> parseLaTeX(String string) throws IOException, ParseException {
         Reader reader = new StringReader(string);
 

@@ -4,7 +4,7 @@
     Author     : pksu
 --%>
 
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +13,23 @@
         <title>List</title>
     </head>
     <body>
+
         <h1>List</h1>
         <ul>
-            <li>
-
-            </li>
+            <c:forEach var="ctn" items="${citationList}">
+                <li><strong>Title: ${ctn.booktitle}</strong>
+                    <ul>
+                        <li>Author: ${ctn.author}</li>
+                        <li>Year: ${ctn.year}</li>
+                        <li>Publisher: ${ctn.publisher}</li>
+                    </ul>
+                </li>
+                    
+                    
+            </c:forEach>
         </ul>
+        <p>
+            <a href="${pageContext.request.contextPath}/add">Add another</a>
+        </p>
     </body>
 </html>

@@ -15,10 +15,13 @@
         <h1>Index</h1>
         <ul>
             <li>
-                <a href="${pageContext.request.contextPath}/list">Listaa viitteet</a>
+                <a href="${pageContext.request.contextPath}/list">List citations</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/add">Lisää viite</a>
+                <a href="${pageContext.request.contextPath}/add">Add citation</a>
+            </li>
+            <li>
+                <a href="${pageContext.request.contextPath}/bibtex">Generate BibTeX</a>
             </li>
         </ul>
     </body>
