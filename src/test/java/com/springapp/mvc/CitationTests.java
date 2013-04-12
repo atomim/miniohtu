@@ -34,9 +34,54 @@ public class CitationTests {
         citation.setBooktitle("asdfgasgasdf");
         assertEquals("asdfgasgasdf", citation.getBooktitle().toString());
     }
+
+    @Test
+    public void YearWorks() {
+        citation.setYear("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getYear().toString());
+    }
+
     @Test
     public void AuthorWorks() {
         citation.setAuthor("asdfgasgasdf");
         assertEquals("asdfgasgasdf", citation.getAuthor().toString());
     }
+
+    @Test
+    public void PublisherWorks() {
+        citation.setPublisher("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getPublisher().toString());
+    }
+
+    @Test
+    public void PagesWorks() {
+        citation.setPages("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getPages().toString());
+    }
+
+    @Test
+    public void AddressWorks() {
+        citation.setAddress("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getAddress().toString());
+    }
+
+    @Test
+    public void VolumeWorks() {
+        citation.setVolume("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getVolume().toString());
+    }
+
+    @Test
+    public void NumberWorks() {
+        citation.setNumber("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getNumber().toString());
+    }
+
+    @Test
+    public void JournalWorks() {
+        citation.setJournal("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getJournal().toString());
+    }
+
+  
 }

@@ -91,6 +91,12 @@ public class Citation {
     public String getYear() {
         return bibtex.getField(BibTeXEntry.KEY_YEAR).toUserString();
     }
+    public String getVolume() {
+        return bibtex.getField(BibTeXEntry.KEY_VOLUME).toUserString();
+    }
+    public String getAddress() {
+        return bibtex.getField(BibTeXEntry.KEY_ADDRESS).toUserString();
+    }
     
     public Map<Key, Value> getFieldMap()  {
         return bibtex.getFields();
