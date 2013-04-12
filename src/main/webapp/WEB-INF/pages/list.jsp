@@ -24,8 +24,6 @@
                         <li>Publisher: ${ctn.publisher}</li>
                     </ul>
                 </li>
-                    
-                    
             </c:forEach>
         </ul>
         <p>

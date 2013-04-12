@@ -18,7 +18,7 @@
                 <li>
                     <label for='booktitle'>Title:</label>
                     <input class='text' name='booktitle' type='text'>
-                </li
+                </li>
                 <li>
                     <label for='author'>Author:</label>
                     <input class='text' name='author' type='text'>
