@@ -1,7 +1,9 @@
 package com.springapp.mvc;
 
+import ohtu.miniohtu.citation.Citation;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,20 +20,23 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@WebAppConfiguration
 //@ContextConfiguration("file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml")
-
 public class CitationTests {
-    private MockMvc mockMvc;
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Autowired
-    protected WebApplicationContext wac;
+    Citation citation;
 
     @Before
     public void setup() {
+        citation = new Citation();
     }
 
     @Test
-    public void testi(){
-        
+    public void booktitleWorks() {
+        citation.setBooktitle("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getBooktitle().toString());
+    }
+    @Test
+    public void AuthorWorks() {
+        citation.setAuthor("asdfgasgasdf");
+        assertEquals("asdfgasgasdf", citation.getAuthor().toString());
     }
 }
