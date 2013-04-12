@@ -26,8 +26,7 @@
                 </li>
             </c:forEach>
         </ul>
-        <p>
-            <a href="${pageContext.request.contextPath}/add">Add another</a>
-        </p>
+        <a href="${pageContext.request.contextPath}/add">Add another</a><br/>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </body>
 </html>

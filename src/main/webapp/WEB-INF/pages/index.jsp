@@ -6,10 +6,13 @@
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
+        <link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     </head>
     <body>
         <h1>Index</h1>
@@ -24,5 +27,6 @@
                 <a href="${pageContext.request.contextPath}/bibtex">Generate BibTeX</a>
             </li>
         </ul>
+            <script src="js/"
     </body>
 </html>

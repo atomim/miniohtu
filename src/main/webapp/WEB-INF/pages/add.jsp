@@ -34,6 +34,7 @@
                 <input class='button' type='submit' value='Add citation'>
             </ul>
         </form>
-
+        <br/>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </body>
 </html>

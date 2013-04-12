@@ -15,5 +15,7 @@
         <h1>Generated bibtex</h1>
         <pre>${bibtexSource}
         </pre>
+        <br/>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </body>
 </html>
