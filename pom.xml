@@ -71,6 +71,13 @@
             <version>1.0.3</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+            <artifactId>selenium-java-client-driver</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
     <reporting>
         <plugins>
@@ -114,10 +121,27 @@
                     </execution>
                 </executions>
                 <!--<configuration>
-                                   					<storyType>html</storyType>
-                                   					<storyReport>${basedir}/target/easyb/easyb-report.html
-                                   					</storyReport>
+                                                   					<storyType>html</storyType>
+                                                   					<storyReport>${basedir}/target/easyb/easyb-report.html
+                                                   					</storyReport>
             				</configuration>-->
+            </plugin>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>selenium-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start-server</goal>
+                        </goals>
+                        <configuration>
+                            <background>true</background>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
