@@ -31,7 +31,7 @@
                     <label for='publisher'>Publisher:</label>
                     <input class='text' name='publisher' type='text'>
                 </li>
-                <input class='button' type='submit' value='Add citation'>
+                <input class='button' id="add" type='submit' value='Add citation'>
             </ul>
         </form>
         <br/>
