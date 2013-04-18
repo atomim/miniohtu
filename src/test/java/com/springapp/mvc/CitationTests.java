@@ -1,6 +1,6 @@
 package com.springapp.mvc;
 
-import ohtu.miniohtu.citation.Citation;
+import ohtu.miniohtu.citation.BibRef;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,70 +18,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
+@WebAppConfiguration
 //@ContextConfiguration("file:src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml")
 public class CitationTests {
 
-    Citation citation;
+    BibRef citation;
 
     @Before
     public void setup() {
-        citation = new Citation();
+        
     }
 
     @Test
-    public void booktitleWorks() {
-        citation.setBooktitle("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getBooktitle().toString());
+    public void toStringWorks() {
+        
     }
 
-    @Test
-    public void YearWorks() {
-        citation.setYear("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getYear().toString());
-    }
-
-    @Test
-    public void AuthorWorks() {
-        citation.setAuthor("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getAuthor().toString());
-    }
-
-    @Test
-    public void PublisherWorks() {
-        citation.setPublisher("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getPublisher().toString());
-    }
-
-    @Test
-    public void PagesWorks() {
-        citation.setPages("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getPages().toString());
-    }
-
-    @Test
-    public void AddressWorks() {
-        citation.setAddress("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getAddress().toString());
-    }
-
-    @Test
-    public void VolumeWorks() {
-        citation.setVolume("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getVolume().toString());
-    }
-
-    @Test
-    public void NumberWorks() {
-        citation.setNumber("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getNumber().toString());
-    }
-
-    @Test
-    public void JournalWorks() {
-        citation.setJournal("asdfgasgasdf");
-        assertEquals("asdfgasgasdf", citation.getJournal().toString());
-    }
-
-  
 }
