@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  *
- * @author pksu
+ * @author ppurokur
  */
-public interface CitationService {
-    void addCitation(Citation citation);
-    List<Citation> getCitations();
+public interface BibRefService {
+    void addCitation(BibRef bc);
+    List<BibRef> getCitations();
 }

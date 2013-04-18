@@ -4,6 +4,7 @@
     Author     : pksu
 --%>
 
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,23 +16,39 @@
     <body>
         <div class="container">
             <h1>Add an article reference</h1>
+
             <form action='' method='post'>
                 <ul>
                     <li>
+
+                        <label for='type'>Type:</label>
+                        <select name="type">
+                            <c:forEach var="type" items="${validTypes}">
+                                <option>
+                                    ${type}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </li>
+                    <li>
+                        <label for='id'>ID:</label>
+                        <input class='text' name="id" type='text'>
+                    </li>
+                    <li>
                         <label for='booktitle'>Title:</label>
-                        <input class='text' name='booktitle' type='text'>
+                        <input class='text' name="entries['title']" type='text'>
                     </li>
                     <li>
                         <label for='author'>Author:</label>
-                        <input class='text' name='author' type='text'>
+                        <input class='text' name="entries['author']" type='text'>
                     </li>
                     <li>
                         <label for='year'>Year:</label>
-                        <input class='text' name='year' type='text'>
+                        <input class='text' name="entries['year']" type='text'>
                     </li>
                     <li>
                         <label for='publisher'>Publisher:</label>
-                        <input class='text' name='publisher' type='text'>
+                        <input class='text' name="entries['publisher']" type='text'>
                     </li>
                     <input class='button' id="add" type='submit' value='Add citation'>
                 </ul>

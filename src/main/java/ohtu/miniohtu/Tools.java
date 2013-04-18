@@ -9,7 +9,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
 import java.util.List;
-import ohtu.miniohtu.citation.Citation;
+import ohtu.miniohtu.citation.BibRef;
 import org.jbibtex.BibTeXDatabase;
 import org.jbibtex.BibTeXEntry;
 import org.jbibtex.BibTeXFormatter;
