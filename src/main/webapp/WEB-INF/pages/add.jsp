@@ -32,19 +32,19 @@
                     </li>
                     <li>
                         <label for='booktitle'>Title:</label>
-                        <input class='text' name='booktitle' type='text'>
+                        <input class='text' name="entryMap['title']" type='text'>
                     </li>
                     <li>
                         <label for='author'>Author:</label>
-                        <input class='text' name='author' type='text'>
+                        <input class='text' name="entryMap['author']" type='text'>
                     </li>
                     <li>
                         <label for='year'>Year:</label>
-                        <input class='text' name='year' type='text'>
+                        <input class='text' name="entryMap['year']" type='text'>
                     </li>
                     <li>
                         <label for='publisher'>Publisher:</label>
-                        <input class='text' name='publisher' type='text'>
+                        <input class='text' name="entryMap['publisher']" type='text'>
                     </li>
                     <input class='button' id="add" type='submit' value='Add citation'>
                 </ul>

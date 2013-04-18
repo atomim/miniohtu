@@ -1,7 +1,6 @@
 package ohtu.miniohtu;
 
 import com.avaje.ebean.EbeanServer;
-import java.io.IOException;
 import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.BibRefService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class WebController {
     BibRefService bs;
     
     @Autowired
-    EbeanServer server;
+    DBService db;
     
     @RequestMapping("/")
     public String indexPage(ModelMap model) {
@@ -27,7 +26,7 @@ public class WebController {
 
     @RequestMapping("/list")
     public String listPage(ModelMap model) {
-        model.addAttribute("citationList", bs.getCitations());
+        model.addAttribute("citationList", db.getCitations());
         return "list";
     }
 

@@ -10,17 +10,15 @@ import javax.persistence.Id;
  *
  * @author ppurokur
  */
-
 @Entity
 public class BibRef {
 
     @Id
     String id;
-
     String type;
-    HashMap<String,String> entries;
-    private static final String[] types = { "book", "inproceedings", "articles", "misc" };
-    
+    HashMap<String, String> entries;
+    private static final String[] types = {"book", "inproceedings", "articles", "misc"};
+
     public BibRef(String type) {
         this.type = type;
         entries = new HashMap<String, String>();
@@ -28,6 +26,11 @@ public class BibRef {
     }
 
     public BibRef() {
+    }
+
+    public static String getUnique(BibRef br) {
+        
+        return null;
     }
 
     public String getId() {
@@ -41,6 +44,7 @@ public class BibRef {
     public String getType() {
         return type;
     }
+
     public static String[] getValidTypes() {
         return types;
     }
@@ -56,18 +60,17 @@ public class BibRef {
     public void setEntries(HashMap<String, String> entries) {
         this.entries = entries;
     }
-    
+
     @Override
     public String toString() {
         String bibtexSource = "@" + type + "{";
         bibtexSource += id + ",\n";
-        for(Map.Entry<String,String> e : entries.entrySet()) {
+        for (Map.Entry<String, String> e : entries.entrySet()) {
             bibtexSource += "\t" + e.getKey() + "=";
-            bibtexSource += "\"" +e.getValue() + "\",\n";
+            bibtexSource += "\"" + e.getValue() + "\",\n";
         }
         bibtexSource += "}";
-        
+
         return bibtexSource;
     }
-    
 }
