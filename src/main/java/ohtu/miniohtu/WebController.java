@@ -49,6 +49,7 @@ public class WebController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addEntry(@ModelAttribute BibRef cit) {
         //cs.addCitation(cit);
+        System.out.println(cit);
         return "redirect:list";
     }
 }
