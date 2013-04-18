@@ -1,5 +1,6 @@
 package ohtu.miniohtu;
 
+import com.avaje.ebean.EbeanServer;
 import java.io.IOException;
 import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.BibRefService;
@@ -15,6 +16,9 @@ public class WebController {
 
     @Autowired
     BibRefService bs;
+    
+    @Autowired
+    EbeanServer server;
     
     @RequestMapping("/")
     public String indexPage(ModelMap model) {
