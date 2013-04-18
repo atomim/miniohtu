@@ -38,6 +38,16 @@ public class Main {
             hdDB.setUrl("jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1");
             hdDB.setHeartbeatSql("select 1 ");
             config.setDataSourceConfig(hdDB);
+        } else if (db == Database.SQLite) {
+            DataSourceConfig sqLite = new DataSourceConfig();
+            sqLite.setDriver("org.sqlite.JDBC");
+            sqLite.setUsername("test");
+            sqLite.setPassword("test");
+            //sqLite.setUrl("jdbc:sqlite:/home/mluukkai/sqlite/kannat/beer.db");
+            sqLite.setUrl("jdbc:sqlite:ohtu.db");
+            config.setDataSourceConfig(sqLite);
+            config.setDatabasePlatform(new SQLitePlatform());
+            config.getDataSourceConfig().setIsolationLevel(Transaction.READ_UNCOMMITTED);
         } else {
             DataSourceConfig postgresDb = new DataSourceConfig();  
             postgresDb.setDriver("org.postgresql.Driver");  
