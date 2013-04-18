@@ -4,6 +4,7 @@
     Author     : pksu
 --%>
 
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,20 @@
     <body>
         <div class="container">
             <h1>Add an article reference</h1>
+
             <form action='' method='post'>
                 <ul>
+                    <li>
+
+                        <label for='type'>Type:</label>
+                        <select name="type">
+                            <c:forEach var="type" items="${validTypes}">
+                                <option>
+                                    ${type}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </li>
                     <li>
                         <label for='booktitle'>Title:</label>
                         <input class='text' name='booktitle' type='text'>

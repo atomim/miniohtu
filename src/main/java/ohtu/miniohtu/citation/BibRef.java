@@ -4,6 +4,7 @@
  */
 package ohtu.miniohtu.citation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,10 @@ import java.util.Map;
 public class BibRef {
     String id;
 
+    String type;
+    HashMap<String,String> entries;
+    private static final String[]  types = { "book", "inproceedings", "articles", "misc" };
+    
     public String getId() {
         return id;
     }
@@ -24,6 +29,9 @@ public class BibRef {
 
     public String getType() {
         return type;
+    }
+    public static String[] getValidTypes() {
+        return types;
     }
 
     public void setType(String type) {
@@ -37,8 +45,6 @@ public class BibRef {
     public void setEntries(HashMap<String, String> entries) {
         this.entries = entries;
     }
-    String type;
-    HashMap<String,String> entries;
     
     private BibRef(String type) {
         this.type = type;
@@ -52,6 +58,10 @@ public class BibRef {
     
     public static BibRef createArticle() {
         return new BibRef("article");
+    }
+    
+    public static BibRef createInproceedings() {
+        return new BibRef("inproceedings");
     }
     
     @Override

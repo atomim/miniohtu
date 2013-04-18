@@ -39,6 +39,7 @@ public class WebController {
     
     @RequestMapping("/add")
     public String addPage(ModelMap model) {
+        model.addAttribute("validTypes", BibRef.getValidTypes());
         return "add";
     }
 
