@@ -83,5 +83,21 @@ public class CitationTests {
         assertEquals("asdfgasgasdf", citation.getJournal().toString());
     }
 
-  
+    @Test
+    public void toStringWorks() {
+        citation.setBooktitle("asdf");
+        assertEquals("asdf", citation.toString());
+    }
+    
+    @Test
+    public void bibtextInstanceIsValid() {
+        assertTrue(citation.getBibTeXEntry() != null);
+    }
+    
+    @Test
+    public void returnsFieldMapSuccessfully() {
+        citation.setAuthor("asdf");
+        citation.setBooktitle("Asdf");
+        assertEquals(2, citation.getFieldMap().size());
+    }
 }
