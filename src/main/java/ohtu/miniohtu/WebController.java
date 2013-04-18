@@ -1,9 +1,8 @@
 package ohtu.miniohtu;
 
 import java.io.IOException;
-import ohtu.miniohtu.citation.BibTeXGenerator;
-import ohtu.miniohtu.citation.Citation;
-import ohtu.miniohtu.citation.CitationService;
+import ohtu.miniohtu.citation.BibRef;
+import ohtu.miniohtu.citation.BibRefService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WebController {
 
     @Autowired
-    CitationService cs;
-
+    BibRefService bs;
+    
     @RequestMapping("/")
     public String indexPage(ModelMap model) {
         return "index";
@@ -24,13 +23,17 @@ public class WebController {
 
     @RequestMapping("/list")
     public String listPage(ModelMap model) {
-        model.addAttribute("citationList", cs.getCitations());
+        model.addAttribute("citationList", bs.getCitations());
         return "list";
     }
 
     @RequestMapping("/bibtex")
-    public String showBibtex(ModelMap model) throws IOException {
-        model.addAttribute("bibtexSource", BibTeXGenerator.generateBibtex(cs.getCitations()));
+    public String showBibtex(ModelMap model) {
+        String bibtex = "";
+        for(BibRef br : bs.getCitations()) {
+            bibtex += br.toString();
+        }
+        model.addAttribute("bibtexSource", bibtex);
         return "bibtex";
     }
     
@@ -40,8 +43,8 @@ public class WebController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addEntry(@ModelAttribute Citation cit) {
-        cs.addCitation(cit);
+    public String addEntry(@ModelAttribute BibRef cit) {
+        //cs.addCitation(cit);
         return "redirect:list";
     }
 }
