@@ -1,24 +1,35 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ohtu.miniohtu.citation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author ppurokur
  */
+
+@Entity
 public class BibRef {
+
+    @Id
     String id;
 
     String type;
     HashMap<String,String> entries;
-    private static final String[]  types = { "book", "inproceedings", "articles", "misc" };
+    private static final String[] types = { "book", "inproceedings", "articles", "misc" };
     
+    public BibRef(String type) {
+        this.type = type;
+        entries = new HashMap<String, String>();
+        id = "";
+    }
+
+    public BibRef() {
+    }
+
     public String getId() {
         return id;
     }
@@ -44,24 +55,6 @@ public class BibRef {
 
     public void setEntries(HashMap<String, String> entries) {
         this.entries = entries;
-    }
-    
-    private BibRef(String type) {
-        this.type = type;
-        entries = new HashMap<String,String>();
-        id = "";
-    }
-    
-    public static BibRef createBook() {
-        return new BibRef("book");
-    }
-    
-    public static BibRef createArticle() {
-        return new BibRef("article");
-    }
-    
-    public static BibRef createInproceedings() {
-        return new BibRef("inproceedings");
     }
     
     @Override

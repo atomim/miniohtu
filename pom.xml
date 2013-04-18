@@ -77,7 +77,12 @@
             <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <reporting>
         <plugins>
