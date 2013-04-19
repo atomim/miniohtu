@@ -10,6 +10,7 @@ import com.avaje.ebean.config.ServerConfig;
 import com.avaje.ebean.config.DataSourceConfig;
 import java.util.List;
 import ohtu.miniohtu.citation.BibRef;
+import ohtu.miniohtu.citation.RefKey;
 import org.springframework.stereotype.Component;
 
 /**
@@ -32,6 +33,7 @@ public class EbeanDB implements DBService {
         dbCfg.setDataSourceConfig(h2);
         dbCfg.setRegister(false);
         dbCfg.addClass(BibRef.class);
+        dbCfg.addClass(RefKey.class);
         
         // will flush/create db
         dbCfg.setDdlGenerate(true);

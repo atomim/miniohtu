@@ -19,12 +19,7 @@
             <h1>List</h1>
             <ul>
                 <c:forEach var="ctn" items="${citationList}">
-                    <li><strong>Title: ${ctn.booktitle}</strong>
-                        <ul>
-                            <li>Author: ${ctn.author}</li>
-                            <li>Year: ${ctn.year}</li>
-                            <li>Publisher: ${ctn.publisher}</li>
-                        </ul>
+                    <li><strong>Shorthand: ${ctn.shorthand}</strong>
                     </li>
                 </c:forEach>
             </ul>

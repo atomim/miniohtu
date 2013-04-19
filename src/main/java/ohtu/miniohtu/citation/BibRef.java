@@ -1,10 +1,14 @@
 package ohtu.miniohtu.citation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.avaje.ebean.common.BeanMap;
 import java.util.Map;
+import java.util.HashMap;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -14,15 +18,29 @@ import javax.persistence.Id;
 public class BibRef {
 
     @Id
-    String id;
+    private Integer id;
+    
+    private String shorthand;
+
+    public String getShorthand() {
+        return shorthand;
+    }
+
+    public void setShorthand(String shorthand) {
+        this.shorthand = shorthand;
+    }
     String type;
-    HashMap<String, String> entries;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="bibref")
+    @MapKey(name = "key")
+    private Map<String, RefKey> entries = new HashMap<String,RefKey>();
+
+    
     private static final String[] types = {"book", "inproceedings", "articles", "misc"};
 
     public BibRef(String type) {
         this.type = type;
-        entries = new HashMap<String, String>();
-        id = "";
+        
     }
 
     public BibRef() {
@@ -33,11 +51,11 @@ public class BibRef {
         return null;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,11 +71,11 @@ public class BibRef {
         this.type = type;
     }
 
-    public HashMap<String, String> getEntries() {
+    public Map<String, RefKey> getEntries() {
         return entries;
     }
 
-    public void setEntries(HashMap<String, String> entries) {
+    public void setEntries(Map<String, RefKey> entries) {
         this.entries = entries;
     }
 
@@ -65,9 +83,9 @@ public class BibRef {
     public String toString() {
         String bibtexSource = "@" + type + "{";
         bibtexSource += id + ",\n";
-        for (Map.Entry<String, String> e : entries.entrySet()) {
+        for (Map.Entry<String, RefKey> e : entries.entrySet()) {
             bibtexSource += "\t" + e.getKey() + "=";
-            bibtexSource += "\"" + e.getValue() + "\",\n";
+            bibtexSource += "\"" + e.getValue().getKey() + "\",\n";
         }
         bibtexSource += "}";
 

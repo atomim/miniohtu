@@ -31,24 +31,24 @@
                         </select>
                     </li>
                     <li>
-                        <label for='id'>ID:</label>
-                        <input class='text' name="id" type='text'>
+                        <label for='shorthand'>Shorthand: </label>
+                        <input class='text' name="shorthand" type='text'>
                     </li>
                     <li>
                         <label for='booktitle'>Title:</label>
-                        <input class='text' name="entries['title']" type='text'>
+                        <input class='text' name="title" type='text'>
                     </li>
                     <li>
                         <label for='author'>Author:</label>
-                        <input class='text' name="entries['author']" type='text'>
+                        <input class='text' name="author" type='text'>
                     </li>
                     <li>
                         <label for='year'>Year:</label>
-                        <input class='text' name="entries['year']" type='text'>
+                        <input class='text' name="year" type='text'>
                     </li>
                     <li>
                         <label for='publisher'>Publisher:</label>
-                        <input class='text' name="entries['publisher']" type='text'>
+                        <input class='text' name="publisher" type='text'>
                     </li>
                     <input class='button' id="add" type='submit' value='Add citation'>
                 </ul>
