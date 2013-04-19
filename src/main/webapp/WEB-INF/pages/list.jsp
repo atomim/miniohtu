@@ -20,6 +20,13 @@
             <ul>
                 <c:forEach var="ctn" items="${citationList}">
                     <li><strong>Shorthand: ${ctn.shorthand}</strong>
+                        <ul>
+                            <c:forEach var="field" items = "${ctn.entries}">
+                                <li>
+                                    ${field.key}: ${field.value}
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </li>
                 </c:forEach>
             </ul>
