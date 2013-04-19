@@ -1,12 +1,16 @@
 package ohtu.miniohtu;
 
 import com.avaje.ebean.EbeanServer;
+import java.util.HashMap;
+import java.util.Map;
 import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.BibRefService;
+import ohtu.miniohtu.citation.RefKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,9 +51,20 @@ public class WebController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addEntry(@ModelAttribute BibRef cit) {
-        //cs.addCitation(cit);
-        System.out.println(cit);
+    public String addEntry(@RequestParam Map<String,String> entries) {
+        db.addCitation(handlePost(entries));
         return "redirect:list";
+    }
+    private BibRef handlePost(Map<String,String> postData) {
+        BibRef br = new BibRef();
+        br.setShorthand(postData.remove("shorthand"));
+        br.setType(postData.remove("type"));
+        HashMap<String, RefKey> hm = new HashMap<String,RefKey>();
+        for(Map.Entry<String,String> es : postData.entrySet()) {
+            RefKey r = new RefKey(es.getValue());
+            hm.put(es.getKey(), r);
+        }
+        br.setEntries(hm);
+        return br;
     }
 }
