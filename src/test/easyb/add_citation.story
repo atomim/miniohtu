@@ -14,6 +14,7 @@ scenario "user can add citations", {
     }
     when 'citation info is filled', {
         new Select(driver.findElement(By.name("type"))).selectByIndex(1);
+        driver.findElement(By.name("shorthand")).sendKeys("cs101");
         driver.findElement(By.name("title")).sendKeys("Computer Science 101");
         driver.findElement(By.name("author")).sendKeys("Mluukkai");
         driver.findElement(By.name("year")).sendKeys("1999");
@@ -21,6 +22,7 @@ scenario "user can add citations", {
         driver.findElement(By.id("add")).submit();
     }
     then 'citation is listed', {
+        driver.getPageSource().contains("cs101").shouldBe true
         driver.getPageSource().contains("Computer Science 101").shouldBe true
     }
 }
