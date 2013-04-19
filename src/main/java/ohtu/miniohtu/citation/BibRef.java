@@ -1,8 +1,10 @@
 package ohtu.miniohtu.citation;
 
 import com.avaje.ebean.common.BeanMap;
+import java.sql.Ref;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,8 +46,12 @@ public class BibRef {
     }
 
     public static String getUnique(BibRef br) {
-        
-        return null;
+        String sh="";
+        Map<String,RefKey> entries = br.getEntries();
+        for (String field: entries.keySet()) {
+            sh=sh+entries.get(field).getKey().charAt(0);
+        }
+        return sh;
     }
 
     public Integer getId() {
