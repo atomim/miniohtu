@@ -31,6 +31,7 @@ public class WebController {
     @RequestMapping("/list")
     public String listPage(ModelMap model) {
         model.addAttribute("citationList", db.getCitations());
+        System.out.println(db.getCitations().get(0));
         return "list";
     }
 

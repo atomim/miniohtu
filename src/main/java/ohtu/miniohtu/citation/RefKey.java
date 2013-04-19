@@ -17,10 +17,14 @@ public class RefKey {
 
     @Id
     private Integer id;
+    
     @ManyToOne
     BibRef bibref;
+    
+    private String mapkey;
 
     public RefKey() {
+    
     }
 
     public RefKey(String s) {
@@ -34,7 +38,7 @@ public class RefKey {
     public void setBibref(BibRef bibref) {
         this.bibref = bibref;
     }
-    String key;
+    private String key;
 
     public String getKey() {
         return key;
@@ -55,5 +59,19 @@ public class RefKey {
     @Override
     public String toString() {
         return key;
+    }
+
+    /**
+     * @return the mapkey
+     */
+    public String getMapkey() {
+        return mapkey;
+    }
+
+    /**
+     * @param mapkey the mapkey to set
+     */
+    public void setMapkey(String mapkey) {
+        this.mapkey = mapkey;
     }
 }

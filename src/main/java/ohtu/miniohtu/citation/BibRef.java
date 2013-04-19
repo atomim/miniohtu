@@ -32,7 +32,7 @@ public class BibRef {
     String type;
     
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="bibref")
-    @MapKey(name = "key")
+    @MapKey(name = "mapkey")
     private Map<String, RefKey> entries = new HashMap<String,RefKey>();
 
     

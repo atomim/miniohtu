@@ -1,4 +1,5 @@
 .idea/*
 target/*
 *.iml
+*.sql
 /nb-configuration.xml
