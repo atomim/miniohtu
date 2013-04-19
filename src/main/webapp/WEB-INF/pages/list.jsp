@@ -18,7 +18,7 @@
             <h1>List</h1>
             <ul>
                 <c:forEach var="ctn" items="${citationList}">
-                    <li><strong>Shorthand: ${ctn.shorthand}</strong>
+                    <li><strong>Shorthand: ${ctn.shorthand}, type: ${ctn.type}</strong>
                         <ul>
                             <c:forEach var="field" items = "${ctn.entries}">
                                 <li>

@@ -58,8 +58,10 @@ public class WebController {
         HashMap<String, RefKey> hm = new HashMap<String,RefKey>();
         for(Map.Entry<String,String> es : postData.entrySet()) {
             RefKey r = new RefKey(es.getValue());
-            hm.put(es.getKey(), r);
+            
+            hm.put(es.getKey().toLowerCase(), r);
         }
+        System.out.println(hm);
         br.setEntries(hm);
         return br;
     }

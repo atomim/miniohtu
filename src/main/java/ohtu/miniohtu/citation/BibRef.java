@@ -6,11 +6,13 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
 
 @Entity
@@ -19,6 +21,7 @@ public class BibRef {
     @Id
     private Integer id;
     
+    @Column(unique=true)
     private String shorthand;
 
     public String getShorthand() {
