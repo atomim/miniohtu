@@ -50,6 +50,8 @@
                         <label for='publisher'>Publisher:</label>
                         <input class='text' name="entries['publisher']" type='text'>
                     </li>
+                    <button type="button" id="newForm">new info</button>
+                    <div id="formSpace"></div>
                     <input class='button' id="add" type='submit' value='Add citation'>
                 </ul>
             </form>
@@ -57,6 +59,8 @@
             <a href="${pageContext.request.contextPath}/">Back</a>
         </div>
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" />
+        <script src="${pageContext.request.contextPath}/resources/js/jquery.js" />
+        <script src="${pageContext.request.contextPath}/resources/js/form.js" />
 
     </body>
 </html>
