@@ -1,5 +1,11 @@
 package com.springapp.mvc;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import ohtu.miniohtu.citation.RefKey;
+import java.util.Map;
+import java.util.HashMap;
 import ohtu.miniohtu.citation.BibRef;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,12 +32,55 @@ public class CitationTests {
 
     @Before
     public void setup() {
-        
+        citation = new BibRef("book");
+    }
+    
+    @Test
+    public void atFirstEntriesAreEmpty() {
+        assertEquals(0, citation.getEntries().size());
+    }
+    
+    @Test
+    public void typeIsSetCorrectly() {
+        assertEquals("book", citation.getType());
+        citation.setType("article");
+        assertEquals("article", citation.getType());
+    }
+    
+    @Test
+    public void atFirstShorthandIsEmpty() {
+        assertEquals(null, citation.getShorthand());
     }
 
     @Test
     public void toStringWorks() {
+        Map<String, RefKey> hashmap = new HashMap<String, RefKey>();
         
+        hashmap.put("publisher", new RefKey("asdf"));
+        hashmap.put("year", new RefKey("1993"));
+        
+        citation.setEntries(hashmap);
+        assertEquals("@book{null,\n\tyear=\"1993\",\n\n\tpublisher=\"asdf\",\n\n}", citation.toString());
+    }
+    
+    @Test
+    public void shorthandsWork() {
+        citation.setShorthand("asdf");
+        assertEquals("asdf", citation.getShorthand());
     }
 
+    @Test
+    public void IDCanBeSet() {
+        citation.setId(1337);
+        assertEquals(1337, (int)citation.getId());
+    }
+    
+    @Test
+    public void validTypesAreReturnedCorrectly() {
+        String[] types = {"book", "inproceedings", "article", "misc"};
+        List<String> tested = Arrays.asList(BibRef.getValidTypes());
+        
+        for(String type : types)
+            assertTrue(tested.contains(type));
+    }
 }
