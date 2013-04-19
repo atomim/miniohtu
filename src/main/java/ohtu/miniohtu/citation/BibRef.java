@@ -91,7 +91,11 @@ public class BibRef {
             bibtexSource += "\"" + e.getValue().getKey() + "\",\n\n";
         }
         bibtexSource += "}";
-
+        bibtexSource = bibtexSource.replaceAll("ä", "\\\\\"{a}");
+        bibtexSource = bibtexSource.replaceAll("ö", "\\\\\"{o}");
+        bibtexSource = bibtexSource.replaceAll("Ä", "\\\\\"{A}");
+        bibtexSource = bibtexSource.replaceAll("Ö", "\\\\\"{O}");
+        
         return bibtexSource;
     }
 }
