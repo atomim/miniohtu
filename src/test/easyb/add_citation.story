@@ -2,6 +2,7 @@ import miniohtu.*;
 import org.seleniumhq.selenium.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.ui.Select;
 
 description 'User can add citations to the system'
 
@@ -13,10 +14,7 @@ scenario "user can add citations", {
     }
     when 'citation info is filled', {
 
-        /*new Select(driver.findElement(By.id("type"))).selectByValue("book");
-        driver.select("id=type","label=book");
-        new SelectElement(driver.findElement(By.id("type"))).SelectByText("book");
-        */
+        new Select(driver.findElement(By.name("type"))).selectByIndex(1);
 
         driver.findElement(By.name("entries['title']")).sendKeys("Computer Science 101");
         driver.findElement(By.name("entries['author']")).sendKeys("Mluukkai");

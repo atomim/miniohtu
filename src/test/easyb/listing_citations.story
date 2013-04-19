@@ -2,7 +2,6 @@ import miniohtu.*;
 import org.seleniumhq.selenium.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.openqa.selenium.support.ui.Select;
 
 description 'User wants citations to be listed in a friendly way'
 
