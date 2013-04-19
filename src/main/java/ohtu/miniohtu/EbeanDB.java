@@ -13,10 +13,6 @@ import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.RefKey;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author pksu
- */
 @Component
 public class EbeanDB implements DBService {
 

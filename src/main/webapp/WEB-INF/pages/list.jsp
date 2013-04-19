@@ -1,7 +1,6 @@
 <%-- 
     Document   : list
     Created on : Apr 11, 2013, 11:21:33 PM
-    Author     : pksu
 --%>
 
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -12,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>List</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-   
+
     </head>
     <body>
         <div class="container">

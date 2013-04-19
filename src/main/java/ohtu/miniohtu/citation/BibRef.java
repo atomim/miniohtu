@@ -10,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author ppurokur
- */
+
 @Entity
 public class BibRef {
 
@@ -36,7 +33,7 @@ public class BibRef {
     private Map<String, RefKey> entries = new HashMap<String,RefKey>();
 
     
-    private static final String[] types = {"book", "inproceedings", "articles", "misc"};
+    private static final String[] types = {"book", "inproceedings", "article", "misc"};
 
     public BibRef(String type) {
         this.type = type;
@@ -82,10 +79,10 @@ public class BibRef {
     @Override
     public String toString() {
         String bibtexSource = "@" + type + "{";
-        bibtexSource += id + ",\n";
+        bibtexSource += shorthand + ",\n";
         for (Map.Entry<String, RefKey> e : entries.entrySet()) {
             bibtexSource += "\t" + e.getKey() + "=";
-            bibtexSource += "\"" + e.getValue().getKey() + "\",\n";
+            bibtexSource += "\"" + e.getValue().getKey() + "\",\n\n";
         }
         bibtexSource += "}";
 

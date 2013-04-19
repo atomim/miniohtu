@@ -4,21 +4,16 @@ import com.avaje.ebean.EbeanServer;
 import java.util.HashMap;
 import java.util.Map;
 import ohtu.miniohtu.citation.BibRef;
-import ohtu.miniohtu.citation.BibRefService;
 import ohtu.miniohtu.citation.RefKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WebController {
-
-    @Autowired
-    BibRefService bs;
     
     @Autowired
     DBService db;
@@ -31,14 +26,13 @@ public class WebController {
     @RequestMapping("/list")
     public String listPage(ModelMap model) {
         model.addAttribute("citationList", db.getCitations());
-        System.out.println(db.getCitations().get(0));
         return "list";
     }
 
     @RequestMapping("/bibtex")
     public String showBibtex(ModelMap model) {
         String bibtex = "";
-        for(BibRef br : bs.getCitations()) {
+        for(BibRef br : db.getCitations()) {
             bibtex += br.toString();
         }
         model.addAttribute("bibtexSource", bibtex);
@@ -56,6 +50,7 @@ public class WebController {
         db.addCitation(handlePost(entries));
         return "redirect:list";
     }
+    
     private BibRef handlePost(Map<String,String> postData) {
         BibRef br = new BibRef();
         br.setShorthand(postData.remove("shorthand"));
