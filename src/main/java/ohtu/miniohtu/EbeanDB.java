@@ -44,6 +44,12 @@ public class EbeanDB implements DBService {
     public void addCitation(BibRef bc) {
         int i = 0;
         RefKey rk = bc.getEntries().get("shorthand");
+        BibRef shorthandUsed = es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique();
+        if(shorthandUsed == null) {
+            es.insert(bc);
+            return;
+        }
+        
         String sh = null;
 
         String next = null;
@@ -59,7 +65,7 @@ public class EbeanDB implements DBService {
         do {
 
             for (Iterator<BibRef> it = brfs.iterator(); it.hasNext();) {
-                if (it.next().getEntries().get("shorthand").getKey().equals(sh)) {
+                if (it.next().getShorthand().equals(sh)) {
                     i++;
                     next = sh + i;
                     continue nextShorthand;
@@ -67,7 +73,7 @@ public class EbeanDB implements DBService {
             }
         } while (false);
         rk.setKey(next);
-        bc.getEntries().put("shorthand", rk);
+        bc.setShorthand(rk.getKey());
         es.insert(bc);
         
     }
