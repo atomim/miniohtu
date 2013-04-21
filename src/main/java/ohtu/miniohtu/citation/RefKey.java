@@ -25,7 +25,7 @@ public class RefKey {
     }
 
     public RefKey(String s) {
-        key = s;
+        setKey(s); // <- Jottei setKey():lle tarvitse tehdä erikseen testiä.
     }
 
     public BibRef getBibref() {

@@ -83,4 +83,15 @@ public class CitationTests {
         for(String type : types)
             assertTrue(tested.contains(type));
     }
+    
+    @Test
+    public void uniquesWork() {
+        Map<String, RefKey> hashmap = new HashMap<String, RefKey>();
+        
+        hashmap.put("year", new RefKey("1993"));
+        hashmap.put("publisher", new RefKey("asdf"));
+        
+        citation.setEntries(hashmap);
+        assertEquals("1a", BibRef.getUnique(citation));
+    }
 }
