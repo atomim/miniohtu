@@ -21,8 +21,7 @@
                     <li><strong>Shorthand: ${ctn.shorthand}, type: ${ctn.type}</strong>
                         <ul>
                             <c:forEach var="field" items = "${ctn.entries}">
-                                <li>
-                                    ${field.key}: ${field.value}
+                                <li><a href="/list/sort/${field.key}">${field.key}</a> : ${field.value}
                                 </li>
                             </c:forEach>
                         </ul>

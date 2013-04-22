@@ -14,4 +14,5 @@ import ohtu.miniohtu.citation.BibRef;
 public interface DBService {
     void addCitation(BibRef bc);
     List<BibRef> getCitations();
+    List<BibRef> getSortedBy(String attrib);
 }

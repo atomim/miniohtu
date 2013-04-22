@@ -8,6 +8,7 @@ import ohtu.miniohtu.citation.RefKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,13 @@ public class WebController {
         return "list";
     }
 
+
+    @RequestMapping(value = "/list/sort/{type}", method = RequestMethod.GET) 
+    public String sortedList(ModelMap model, @PathVariable String type) {
+        model.addAttribute("citationList", db.getSortedBy(type));
+        return "list";
+    }
+    
     @RequestMapping("/bibtex")
     public String showBibtex(ModelMap model) {
         String bibtex = "";

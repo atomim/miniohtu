@@ -8,6 +8,9 @@ import com.avaje.ebean.EbeanServer;
 import com.avaje.ebean.EbeanServerFactory;
 import com.avaje.ebean.config.ServerConfig;
 import com.avaje.ebean.config.DataSourceConfig;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -45,11 +48,11 @@ public class EbeanDB implements DBService {
         int i = 0;
         RefKey rk = bc.getEntries().get("shorthand");
         BibRef shorthandUsed = es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique();
-        if(shorthandUsed == null) {
+        if (shorthandUsed == null) {
             es.insert(bc);
             return;
         }
-        
+
         String sh = null;
 
         String next = null;
@@ -75,11 +78,27 @@ public class EbeanDB implements DBService {
         rk.setKey(next);
         bc.setShorthand(rk.getKey());
         es.insert(bc);
-        
+
     }
 
     @Override
     public List<BibRef> getCitations() {
         return es.find(BibRef.class).findList();
+    }
+    
+    @Override
+    public List<BibRef> getSortedBy(String attrib) {
+        final String sortAttrib = attrib;
+        List<BibRef> ar = es.find(BibRef.class).findList();
+        Collections.sort(ar, new Comparator<BibRef>() {
+            public int compare(BibRef o1, BibRef o2) {
+                if(o1.getEntries().get(sortAttrib).getKey() == null ||
+                        o2.getEntries().get(sortAttrib).getKey() == null) {
+                    return -1;
+                }
+                return o1.getEntries().get(sortAttrib).getKey().compareTo(o2.getEntries().get(sortAttrib).getKey());
+            }
+        });
+        return ar;
     }
 }
