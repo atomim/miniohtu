@@ -60,7 +60,7 @@ public class CitationTests {
         hashmap.put("year", new RefKey("1993"));
         
         citation.setEntries(hashmap);
-        assertEquals("@book{null,\n\tyear=\"1993\",\n\n\tpublisher=\"asdf\",\n\n}", citation.toString());
+        assertEquals("\n@book{null,\n\tyear=\"1993\",\n\tpublisher=\"asdf\",\n}", citation.toString());
     }
     
     @Test
