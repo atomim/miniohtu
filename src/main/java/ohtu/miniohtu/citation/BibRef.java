@@ -87,11 +87,11 @@ public class BibRef {
 
     @Override
     public String toString() {
-        String bibtexSource = "@" + type + "{";
+        String bibtexSource = "\n@" + type + "{";
         bibtexSource += shorthand + ",\n";
         for (Map.Entry<String, RefKey> e : entries.entrySet()) {
             bibtexSource += "\t" + e.getKey() + "=";
-            bibtexSource += "\"" + e.getValue().getKey() + "\",\n\n";
+            bibtexSource += "\"" + e.getValue().getKey() + "\",\n";
         }
         bibtexSource += "}";
         bibtexSource = bibtexSource.replaceAll("ä", "\\\\\"{a}");

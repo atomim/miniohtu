@@ -10,14 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add an article</title>
+        <title>Edit</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />  
     </head>
     <body>
         <div class="container">
-            <h1>Add an article reference</h1>
+            <h1>Edit</h1>
 
-            <form action='' method='post'>
+            <form action='/save' method='post'>
                 <ul>
                     <li>
 
@@ -31,35 +31,25 @@
                         </select>
                     </li>
                     <li>
-                        <label for='shorthand'>Shorthand: </label>
-                        <input class='text' name="shorthand" type='text'>
+                        <label for='shorthand'>shorthand: </label>
+                        <input class='text' name="shorthand" type='text' value="${existingData.shorthand}">
                     </li>
-                    <li>
-                        <label for='booktitle'>Title:</label>
-                        <input class='text' name="title" type='text'>
-                    </li>
-                    <li>
-                        <label for='author'>Author:</label>
-                        <input class='text' name="author" type='text'>
-                    </li>
-                    <li>
-                        <label for='year'>Year:</label>
-                        <input class='text' name="year" type='text'>
-                    </li>
-                    <li>
-                        <label for='publisher'>Publisher:</label>
-                        <input class='text' name="publisher" type='text'>
-                    </li>
+                    <c:forEach var="existingItem" items="${existingData.entries}">
+                        <li>
+                            <label for='${existingItem.key}'>${existingItem.key}: </label>
+                            <input class='text' name="${existingItem.key}" type='text' value="${existingItem.value}">
+                        </li>
+                    </c:forEach>
                     <button type="button" id="newForm">New field</button>
                     <div id="formSpace"></div>
-                    <input class='button' id="add" type='submit' value='Add citation'>
+                    <input class='button' id="add" type='submit' value='Edit citation'>
                 </ul>
             </form>
             <br/>
             <a href="${pageContext.request.contextPath}/">Back</a>
         </div>
         <script src="<c:url value="/resources/js/jquery.js"/>"/></script>
-        <script src="<c:url value="/resources/js/bootstrap.min.js"/>"/></script>
-        <script src="<c:url value="/resources/js/form.js"/>"/></script>
-    </body>
+    <script src="<c:url value="/resources/js/bootstrap.min.js"/>"/></script>
+<script src="<c:url value="/resources/js/form.js"/>"/></script>
+</body>
 </html>

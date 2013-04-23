@@ -37,6 +37,26 @@ public class WebController {
         return "list";
     }
     
+    @RequestMapping(value = "/remove/{item}", method = RequestMethod.GET) 
+    public String removeItem(ModelMap model, @PathVariable String item) {
+        db.removeCitation(item);
+        return "list";
+    }
+    
+    @RequestMapping(value = "/edit/{item}", method = RequestMethod.GET) 
+    public String getEditForm(ModelMap model, @PathVariable String item) {
+        model.addAttribute("existingData", db.getCitation(item));
+        model.addAttribute("validTypes", BibRef.getValidTypes());
+        return "edit";
+    }
+    
+    @RequestMapping(value = "/save", method = RequestMethod.POST) 
+    public String saveEditedItem(ModelMap model, @RequestParam Map<String,String> entries) {
+        db.updateCitation(handlePost(entries));
+        model.addAttribute("citationList", db.getCitations());
+        return "list";
+    }
+    
     @RequestMapping("/bibtex")
     public String showBibtex(ModelMap model) {
         String bibtex = "";
@@ -69,7 +89,6 @@ public class WebController {
             
             hm.put(es.getKey().toLowerCase(), r);
         }
-        System.out.println(hm);
         br.setEntries(hm);
         return br;
     }

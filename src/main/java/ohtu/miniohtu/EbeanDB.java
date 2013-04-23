@@ -85,20 +85,44 @@ public class EbeanDB implements DBService {
     public List<BibRef> getCitations() {
         return es.find(BibRef.class).findList();
     }
-    
+
     @Override
     public List<BibRef> getSortedBy(String attrib) {
         final String sortAttrib = attrib;
         List<BibRef> ar = es.find(BibRef.class).findList();
         Collections.sort(ar, new Comparator<BibRef>() {
             public int compare(BibRef o1, BibRef o2) {
-                if(o1.getEntries().get(sortAttrib).getKey() == null ||
-                        o2.getEntries().get(sortAttrib).getKey() == null) {
+                if (o1.getEntries().get(sortAttrib).getKey() == null
+                        || o2.getEntries().get(sortAttrib).getKey() == null) {
                     return -1;
                 }
                 return o1.getEntries().get(sortAttrib).getKey().compareTo(o2.getEntries().get(sortAttrib).getKey());
             }
         });
         return ar;
+    }
+
+    @Override
+    public void removeCitation(String shorthand) {
+        BibRef destroyable = es.find(BibRef.class).where().like("shorthand", shorthand).findUnique();
+        if (destroyable != null) {
+            es.delete(destroyable);
+        }
+    }
+
+    @Override
+    public BibRef getCitation(String shorthand) {
+        return es.find(BibRef.class).where().like("shorthand", shorthand).findUnique();
+    }
+
+    @Override
+    public void updateCitation(BibRef newItem) {
+        BibRef old = es.find(BibRef.class).where().like("shorthand", newItem.getShorthand()).findUnique();
+        System.out.println(newItem.getShorthand());
+        if (old != null) {
+            System.out.println("-----------------------------");
+            es.delete(old);
+            es.save(newItem);
+        }
     }
 }
