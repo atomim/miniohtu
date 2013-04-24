@@ -52,7 +52,10 @@ public class BibRef {
         String sh="";
         Map<String,RefKey> entries = br.getEntries();
         for (String field: entries.keySet()) {
-            sh=sh+entries.get(field).getKey().charAt(0);
+            String t=entries.get(field).getKey();
+            if (t!=null && t.length()>0) {
+                sh=sh+Character.toUpperCase(t.charAt(0));
+            }
         }
         return sh;
     }

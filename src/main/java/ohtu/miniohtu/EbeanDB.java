@@ -45,40 +45,21 @@ public class EbeanDB implements DBService {
 
     @Override
     public void addCitation(BibRef bc) {
-        int i = 0;
         RefKey rk = bc.getEntries().get("shorthand");
-        BibRef shorthandUsed = es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique();
-        if (shorthandUsed == null) {
-            es.insert(bc);
-            return;
+        if(bc.getShorthand().equals("")) {
+            bc.setShorthand(BibRef.getUnique(bc));
         }
-
-        String sh = null;
-
-        String next = null;
-        if (rk != null) {
-            sh = rk.getKey();
-            next = sh;
-        } else {
-            rk = new RefKey();
-            next = BibRef.getUnique(bc);
-        }
-        List<BibRef> brfs = es.find(BibRef.class).findList();
-        nextShorthand:
-        do {
-
-            for (Iterator<BibRef> it = brfs.iterator(); it.hasNext();) {
-                if (it.next().getShorthand().equals(sh)) {
-                    i++;
-                    next = sh + i;
-                    continue nextShorthand;
-                }
+        String sh=bc.getShorthand();
+        int i=1;
+        while(true){
+            BibRef shorthandUsed = es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique();
+            if (shorthandUsed == null) {
+                es.insert(bc);
+                return;
             }
-        } while (false);
-        rk.setKey(next);
-        bc.setShorthand(rk.getKey());
-        es.insert(bc);
-
+            i++;
+            bc.setShorthand(sh+""+i);
+        }
     }
 
     @Override
