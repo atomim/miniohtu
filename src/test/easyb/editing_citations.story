@@ -10,7 +10,7 @@ description 'User is able to edit existing citations.'
 scenario 'User changes the information of a citation.', {
 	given 'User is at the editing form.', {
 	    driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/");
+        driver.get("http://127.0.0.1:8080/");
         driver.findElement(By.linkText("Add citation")).click();
         driver = UsefulMethods.addCitation(driver, "cs101", "Computer Science 101");
         driver.findElement(By.linkText("Edit")).click();
