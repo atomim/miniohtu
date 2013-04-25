@@ -92,6 +92,6 @@ public class CitationTests {
         hashmap.put("publisher", new RefKey("asdf"));
         
         citation.setEntries(hashmap);
-        assertEquals("1a", BibRef.getUnique(citation));
+        assertEquals("1A", BibRef.getUnique(citation));
     }
 }
