@@ -48,6 +48,10 @@ public class EbeanDB implements DBService {
         RefKey rk = bc.getEntries().get("shorthand");
         if(bc.getShorthand().equals("")) {
             bc.setShorthand(BibRef.getUnique(bc));
+        } else {
+            if (es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique()!=null) {
+                throw new IllegalArgumentException("The shorthand is already in use. Please take another one.");
+            }
         }
         String sh=bc.getShorthand();
         int i=1;

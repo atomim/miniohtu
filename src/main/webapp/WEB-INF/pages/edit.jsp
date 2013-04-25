@@ -16,6 +16,8 @@
     <body>
         <div class="container">
             <h1>Edit</h1>
+            
+            <p>${message}</p>
 
             <form action='/save' method='post'>
                 <ul>

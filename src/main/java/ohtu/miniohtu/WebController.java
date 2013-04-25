@@ -7,11 +7,13 @@ import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.RefKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class WebController {
@@ -74,9 +76,16 @@ public class WebController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addEntry(@RequestParam Map<String,String> entries) {
-        db.addCitation(handlePost(entries));
-        return "redirect:list";
+    public String addEntry(ModelMap model,@RequestParam Map<String,String> entries) {
+        try{
+            db.addCitation(handlePost(new HashMap(entries)));
+            return "redirect:list";
+        }catch(IllegalArgumentException e){
+            model.addAttribute("message", e.getMessage());
+            model.addAttribute("existingData", handlePost(entries));
+            model.addAttribute("validTypes", BibRef.getValidTypes());
+            return "edit";
+        }
     }
     
     private BibRef handlePost(Map<String,String> postData) {
