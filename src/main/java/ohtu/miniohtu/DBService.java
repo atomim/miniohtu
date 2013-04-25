@@ -15,7 +15,7 @@ public interface DBService {
     void addCitation(BibRef bc);
     void removeCitation(String shorthand);
     BibRef getCitation(String shorthand);
-    void updateCitation(BibRef newItem);
+    void updateCitation(String previousShorthand, BibRef newItem);
     List<BibRef> getCitations();
     List<BibRef> getSortedBy(String attrib);
 }

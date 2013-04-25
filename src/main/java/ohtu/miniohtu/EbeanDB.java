@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import ohtu.miniohtu.citation.BibRef;
 import ohtu.miniohtu.citation.RefKey;
+import ohtu.miniohtu.exceptions.NoShorthandException;
+import ohtu.miniohtu.exceptions.ShorthandTakenException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -46,23 +48,24 @@ public class EbeanDB implements DBService {
     @Override
     public void addCitation(BibRef bc) {
         RefKey rk = bc.getEntries().get("shorthand");
-        if(bc.getShorthand().equals("")) {
+        if (bc.getShorthand().equals("")) {
             bc.setShorthand(BibRef.getUnique(bc));
+            throw new NoShorthandException("You Didn't provide a shorthand. Is this okay?");
         } else {
-            if (es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique()!=null) {
-                throw new IllegalArgumentException("The shorthand is already in use. Please take another one.");
+            if (es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique() != null) {
+                throw new ShorthandTakenException("The shorthand is already in use. Please take another one.");
             }
         }
-        String sh=bc.getShorthand();
-        int i=1;
-        while(true){
+        String sh = bc.getShorthand();
+        int i = 1;
+        while (true) {
             BibRef shorthandUsed = es.find(BibRef.class).where().like("shorthand", bc.getShorthand()).findUnique();
             if (shorthandUsed == null) {
                 es.insert(bc);
                 return;
             }
             i++;
-            bc.setShorthand(sh+""+i);
+            bc.setShorthand(sh + "" + i);
         }
     }
 
@@ -101,13 +104,15 @@ public class EbeanDB implements DBService {
     }
 
     @Override
-    public void updateCitation(BibRef newItem) {
-        BibRef old = es.find(BibRef.class).where().like("shorthand", newItem.getShorthand()).findUnique();
+    public void updateCitation(String previousShorthand, BibRef newItem) {
+        BibRef old = es.find(BibRef.class).where().like("shorthand", previousShorthand).findUnique();
         System.out.println(newItem.getShorthand());
+
+        addCitation(newItem);//throws if not unique
         if (old != null) {
             System.out.println("-----------------------------");
             es.delete(old);
-            es.save(newItem);
         }
+
     }
 }

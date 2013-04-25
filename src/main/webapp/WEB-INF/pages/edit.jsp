@@ -20,6 +20,8 @@
             <p>${message}</p>
 
             <form action='/save' method='post'>
+                <input type="hidden" name="previousShorthand" value="${existingData.shorthand}">
+                <input type="hidden" name="new" value="${new}">
                 <ul>
                     <li>
 
