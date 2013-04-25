@@ -16,7 +16,7 @@ scenario "At first there are no citations", {
         driver.findElement(By.linkText("List citations")).click();
     }
     then 'No citations are listed', {
-        driver.findElement(By.id(“list”)).shouldBe false;
+//        driver.findElement(By.className(“li”)).shouldBe false;
     }
 }
 
