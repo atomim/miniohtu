@@ -10,7 +10,7 @@ description 'User can add citations to the system'
 scenario "user can add citations", {
     given 'went to the webpage', { 
         driver = new HtmlUnitDriver();
-        driver.get("http://127.0.0.1:8080/");
+        driver.get("http://localhost:8080/");
         driver.findElement(By.linkText("Add citation")).click();  
     }
     when 'citation info is filled', {
