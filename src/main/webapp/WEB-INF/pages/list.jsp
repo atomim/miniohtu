@@ -21,10 +21,10 @@
                     <li id="list"><strong>Shorthand: ${ctn.shorthand}, type: ${ctn.type}</strong>
                         
                         <ul>
-                            <li><a href="/remove/${ctn.shorthand}">Remove</a></li>
-                            <li><a href="/edit/${ctn.shorthand}">Edit</a></li>
+                            <li><a href="${pageContext.request.contextPath}/remove/${ctn.shorthand}">Remove</a></li>
+                            <li><a href="${pageContext.request.contextPath}/edit/${ctn.shorthand}">Edit</a></li>
                             <c:forEach var="field" items = "${ctn.entries}">
-                                <li><a href="/list/sort/${field.key}">${field.key}</a> : ${field.value}
+                                <li><a href="${pageContext.request.contextPath}/list/sort/${field.key}">${field.key}</a> : ${field.value}
                                 </li>
                             </c:forEach>
                         </ul>

@@ -58,8 +58,8 @@
             <br/>
             <a href="${pageContext.request.contextPath}/">Back</a>
         </div>
-        <script src="<c:url value="/resources/js/jquery.js"/>"/></script>
-        <script src="<c:url value="/resources/js/bootstrap.min.js"/>"/></script>
-        <script src="<c:url value="/resources/js/form.js"/>"/></script>
+        <script src="<c:url value="${pageContext.request.contextPath}/resources/js/jquery.js"/>"/></script>
+        <script src="<c:url value="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"/>"/></script>
+        <script src="<c:url value="${pageContext.request.contextPath}/resources/js/form.js"/>"/></script>
     </body>
 </html>
