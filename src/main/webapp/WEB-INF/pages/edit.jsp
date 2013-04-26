@@ -16,10 +16,10 @@
     <body>
         <div class="container">
             <h1>Edit</h1>
-            
+
             <p>${message}</p>
 
-            <form action='/save' method='post'>
+            <form action='${pageContext.request.contextPath}/save' method='post'>
                 <input type="hidden" name="previousShorthand" value="${existingData.shorthand}">
                 <input type="hidden" name="new" value="${new}">
                 <ul>
@@ -52,8 +52,8 @@
             <br/>
             <a href="${pageContext.request.contextPath}/">Back</a>
         </div>
-        <script src="<c:url value="/resources/js/jquery.js"/>"/></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js"/>"/></script>
-<script src="<c:url value="/resources/js/form.js"/>"/></script>
+        <script src="<c:url value="${pageContext.request.contextPath}/resources/js/jquery.js"/>"/></script>
+    <script src="<c:url value="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"/>"/></script>
+<script src="<c:url value="${pageContext.request.contextPath}/resources/js/form.js"/>"/></script>
 </body>
 </html>

@@ -18,13 +18,13 @@
             <h1>List</h1>
             <ul>
                 <c:forEach var="ctn" items="${citationList}">
-                    <li><strong>Shorthand: ${ctn.shorthand}, type: ${ctn.type}</strong>
+                    <li id="list"><strong>Shorthand: ${ctn.shorthand}, type: ${ctn.type}</strong>
                         
                         <ul>
-                            <li><a href="/remove/${ctn.shorthand}">Remove</a></li>
-                            <li><a href="/edit/${ctn.shorthand}">Edit</a></li>
+                            <li><a href="${pageContext.request.contextPath}/remove/${ctn.shorthand}">Remove</a></li>
+                            <li><a href="${pageContext.request.contextPath}/edit/${ctn.shorthand}">Edit</a></li>
                             <c:forEach var="field" items = "${ctn.entries}">
-                                <li><a href="/list/sort/${field.key}">${field.key}</a> : ${field.value}
+                                <li><a href="${pageContext.request.contextPath}/list/sort/${field.key}">${field.key}</a> : ${field.value}
                                 </li>
                             </c:forEach>
                         </ul>
@@ -34,6 +34,6 @@
             <a href="${pageContext.request.contextPath}/add">Add another</a><br/>
             <a href="${pageContext.request.contextPath}/">Back</a>
         </div>
-        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" />
+        <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js" /></script>
     </body>
 </html>
